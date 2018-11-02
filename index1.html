@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	
+		<style type="text/css">
+			#lucky ul{
+	list-style: none;
+}
+#lucky ul li{
+	width: 60px;
+	height: 30px;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	line-height: 30px;
+	
+	text-align: center;
+}
+.zhong{
+	background:cadetblue;
+	color: blue;
+}
+#jiang{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: blue;
+}
+#hao{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: blue;
+}
+
+#name{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: blue;
+}
+
+
+		</style>
+	</head>
+	<body>
+		<input id="star" name="star" type="button" value="抽奖"><br><br><br>
+		恭喜<span id="hao">XX</span>号<span id="name">XX</span>中<span id="jiang"></span>
+		<div id="lucky">
+			<ul id="luckyboy">
+				<li class="zhong">张三</li>
+				<li>李四</li>
+				<li>郑五</li>
+				<li>赵六</li>
+				<li>金九</li>
+				<li>老乔</li>
+			</ul>
+		</div>
+	</body>
+		
+		<script >
+			var ostar=document.getElementById("star");
+	var ali=document.getElementById("lucky").getElementsByTagName("li");
+	var oname=document.getElementById("name");
+	var ohao=document.getElementById("hao");
+	var ojiang=document.getElementById("jiang");
+	
+	var t1;
+	var m=0;
+	ostar.onclick=function(){
+		if(ostar.value=="抽奖")
+		{
+			ostar.value="停止";
+			t1=setInterval(chou,50);
+		}
+		else
+		{
+			ostar.value="抽奖";
+			clearInterval(t1);
+		}
+	}
+	function chou(){
+		var n=Math.floor(Math.random()*ali.length)+1;
+		ohao.innerHTML=n;
+		oname.innerHTML=ali[n-1].innerHTML;
+		for(var i=0;i<ali.length;i++)
+		{
+			ali[i].className="";
+		}
+		ali[n-1].className="zhong";
+		switch(n%5)
+		{
+			case 0:
+			ojiang.innerHTML="一等奖";
+			break;
+			case 1:
+			ojiang.innerHTML="二等奖";
+			break;
+			case 2:
+			ojiang.innerHTML="三等奖";
+			break;
+			case 3:
+			ojiang.innerHTML="欢迎下次再来";
+			break;
+			case 2:
+			ojiang.innerHTML="欢迎下次再来";
+			break;
+		}
+	}
+
+		</script>
+</html>
